@@ -1,9 +1,10 @@
 package com.OrangeTalents.Orange.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.http.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -27,10 +28,14 @@ public class cadastroUsuariosController implements WebMvcConfigurer{
 	private cadastroUsuarioService service;
 	
 	@PostMapping("/cadastroUsuario")
-	public cadastroUsuarioModel cadastrarUsuario(@RequestBody cadastroUsuarioModel objetoCadastroUsuario) {
-		cadastroUsuarioModel usuario = new cadastroUsuarioModel("Cleiton","c.ortega200935@gmail.com","12345678910");
-		repository.save(objetoCadastroUsuario);
-		return objetoCadastroUsuario;
+	public ResponseEntity<?> cadastrarUsuario(@RequestBody cadastroUsuarioModel objetoCadastroUsuario) {
+		try {
+			repository.save(objetoCadastroUsuario);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		}catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+		
 	}
 	
 }

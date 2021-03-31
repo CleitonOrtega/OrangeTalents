@@ -1,7 +1,5 @@
 package com.OrangeTalents.Orange.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -16,32 +14,29 @@ public class cadastroUsuarioModel {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long idUsuario;
 	
+	@Column
+	@NotNull
 	@NotEmpty(message="Este campo precisa do seu nome!")
 	private String nome;
 	
+	@Column(unique=true)
+	@NotNull
 	@NotEmpty(message="Este campo precisa do seu email!")
 	@Email
 	private String email;
 	
+	@Column(unique=true)
+	@NotNull
 	@NotEmpty(message="Este campo precisa do seu CPF!")
-	@Size(min = 11, max = 11, message="CPF deve ter 11 numeros")
+	@Size(min = 14, max = 14, message="CPF deve ter 11 numeros")
 	@CPF
 	private String cpf;
 
+	@Column
+	@NotNull
 	@NotEmpty(message="Este campo precisa da sua data de nascimento!")
 	@JsonFormat(pattern="yyyy-mm-dd")
-	private LocalDate nascimento;
-	
-	
-
-	public cadastroUsuarioModel(@NotEmpty(message = "Este campo precisa do seu nome!") String nome,
-		@NotEmpty(message = "Este campo precisa do seu email!") @Email String email,
-		@NotEmpty(message = "Este campo precisa do seu CPF!") @Size(min = 11, max = 11, message = "CPF deve ter 11 numeros") @CPF String cpf){
-		super();
-		this.nome = nome;
-		this.email = email;
-		this.cpf = cpf;
-	}
+	private String nascimento;
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -75,11 +70,11 @@ public class cadastroUsuarioModel {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(LocalDate Nascimento) {
+	public void setNascimento(String Nascimento) {
 		this.nascimento = Nascimento;
 	}
 	
