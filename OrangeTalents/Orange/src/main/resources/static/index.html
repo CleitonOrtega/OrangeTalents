@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="controller.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<body>
+	<div class="mx-2">
+		<img src="https://i.ibb.co/NK6LX0V/zup.png">
+		<img src="https://i.ibb.co/RD1tFhF/orange.png">
+		<hr>
+
+
+		<div ng-app="myApp" ng-controller="myCtrl" class="mb-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<p class="fs-1">Cadastro Usuario</p>
+						<form>
+
+							Nome: <p><input type="text" class="form-control" size="40" ng-model="nome" placeholder="Digite seu nome completo" required></p>
+							CPF: <p><input type="text" class="form-control cpf-mask" size="14" ng-model="cpf" placeholder="Ex.: 000.000.000-00" required></p>
+							Email: <p><input type="text" class="form-control" size="50" ng-model="email" placeholder="example@example.com" required></p>
+							Data de Nascimento: <p><input type="date" class="form-control" ng-model="nascimento" required></p>
+
+							<button class="btn btn-primary w-100" ng-click="salvarUsuario()">Cadastrar Usuario</button>
+						
+						</form>
+					</div>
+					<div class="col-md-6">
+						<p class="fs-1">Cadastro Vacinado</p>
+						<form>
+							Nome da Vacina: <p><input type="text" class="form-control" size="40" ng-model="nomeDaVacina"
+									placeholder="Digite o nome da vacina" required></p>
+							Email: <p><input type="text" class="form-control" size="50" ng-model="emailUsuario"
+									placeholder="example@example.com" required></p>
+							Data da Aplicação da Vacina: <p><input type="date" class="form-control"
+									ng-model="dataAplicacao" required></p>
+
+							<button class="btn btn-primary w-100" ng-click="salvarVacinado()">Cadastrar Aplicação da
+								Vacina</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="sweetalert2.all.min.js"></script>
+
+	<script async="" src="//www.google-analytics.com/analytics.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="//assets.locaweb.com.br/locastyle/2.0.6/javascripts/locastyle.js"></script>
+	<script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+	<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -16,25 +16,21 @@ public class cadastroUsuarioModel {
 	
 	@Column
 	@NotNull
-	@NotEmpty(message="Este campo precisa do seu nome!")
 	private String nome;
 	
 	@Column(unique=true)
 	@NotNull
-	@NotEmpty(message="Este campo precisa do seu email!")
 	@Email
 	private String email;
 	
 	@Column(unique=true)
 	@NotNull
-	@NotEmpty(message="Este campo precisa do seu CPF!")
-	@Size(min = 14, max = 14, message="CPF deve ter 11 numeros")
+	@Size(min = 14, max = 14)
 	@CPF
 	private String cpf;
 
 	@Column
 	@NotNull
-	@NotEmpty(message="Este campo precisa da sua data de nascimento!")
 	@JsonFormat(pattern="yyyy-mm-dd")
 	private String nascimento;
 

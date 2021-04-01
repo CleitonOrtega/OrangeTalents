@@ -9,7 +9,6 @@ import org.springframework.http.*;
 import com.OrangeTalents.Orange.model.cadastroVacinaModel;
 import com.OrangeTalents.Orange.repository.cadastroVacinaRepository;
 import com.OrangeTalents.Orange.repository.cadastroUsuarioRepository;
-import com.OrangeTalents.Orange.service.cadastroVacinaService;
 
 @RestController
 public class cadastroVacinaController {
@@ -20,14 +19,11 @@ public class cadastroVacinaController {
 		
 	@Autowired
 	private cadastroUsuarioRepository repositoryUsuario;
-	
-	@Autowired
-	private cadastroVacinaService service;
 
 	@PostMapping("/cadastroVacina")
 	public ResponseEntity<?> cadastrarVacina(@RequestBody cadastroVacinaModel objetoCadastroVacina) {
 		try {
-			if(repositoryUsuario.findByEmail(objetoCadastroVacina.getEmailUsuario()).isPresent() && repository.findByEmailUsuario(objetoCadastroVacina.getEmailUsuario()).isEmpty()) {
+			if(repositoryUsuario.findByEmail(objetoCadastroVacina.getEmailUsuario()).isPresent()) {
 				repository.save(objetoCadastroVacina);
 				return ResponseEntity.status(HttpStatus.CREATED).build();
 			}else {

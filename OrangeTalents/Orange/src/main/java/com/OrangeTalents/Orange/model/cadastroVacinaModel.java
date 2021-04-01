@@ -1,7 +1,5 @@
 package com.OrangeTalents.Orange.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -15,27 +13,18 @@ public class cadastroVacinaModel {
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
 	private Long idVacina;
 	
+	@Column
 	@NotNull
-	@NotEmpty(message="Este campo precisa do seu nome!")
 	private String nomeDaVacina;
 	
+	@Column(unique=true)
 	@NotNull
-	@NotEmpty(message="Este campo precisa do seu email!")
 	private String emailUsuario;
 	
+	@Column
 	@NotNull
+	@JsonFormat(pattern="yyyy-mm-dd")
     private String dataAplicacao;
-
-	
-
-	public cadastroVacinaModel(@NotEmpty(message = "Este campo precisa do seu nome!") String nomeDaVacina,
-			@NotEmpty(message = "Este campo precisa do seu email!") String emailUsuario,
-			@NotNull String dataAplicacao) {
-		super();
-		this.nomeDaVacina = nomeDaVacina;
-		this.emailUsuario = emailUsuario;
-		this.dataAplicacao = dataAplicacao;
-	}
 
 	public Long getIdVacina() {
 		return idVacina;
@@ -67,10 +56,6 @@ public class cadastroVacinaModel {
 
 	public void setDataAplicacao(String dataAplicacao) {
 		this.dataAplicacao = dataAplicacao;
-	}
-
-	public cadastroVacinaModel muda() {
-		return new cadastroVacinaModel(this.nomeDaVacina,this.emailUsuario,this.dataAplicacao);
 	}
 	
 }
