@@ -1,6 +1,7 @@
 package com.OrangeTalents.Orange.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,9 @@ import com.OrangeTalents.Orange.repository.cadastroVacinaRepository;
 import com.OrangeTalents.Orange.repository.cadastroUsuarioRepository;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class cadastroVacinaController {
 
-	//Injetando o Repository e o Service no controler
 	@Autowired
 	private cadastroVacinaRepository repository;
 		
@@ -26,7 +27,7 @@ public class cadastroVacinaController {
 			if(repositoryUsuario.findByEmail(objetoCadastroVacina.getEmailUsuario()).isPresent()) {
 				repository.save(objetoCadastroVacina);
 				return ResponseEntity.status(HttpStatus.CREATED).build();
-			}else {
+			}else{
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 			}
 		}catch (Exception e){
